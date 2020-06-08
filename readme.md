@@ -48,7 +48,7 @@ Going over the code, we see that the pre-processing code in *features.py* makes 
 
 In this case, we decide to make things a bit more robust by implementing the preprocessing using scikit-learn transformers.
 
-1. Implement the pre-processing using scikit-learn transformers. *Tip: You may be able to use some built-in transformers.*
+1. Implement the pre-processing using scikit-learn transformers. *Tip: You may be able to use some built-in transformers. Another tip: Look at the ColumnTransformer if you want to apply different transformations to different columns.*
 2. Try running all the transformers together in a single pipeline to get a similar result as the original *preprocess* function.
 3. Try including the model in the same pipeline, so that preprocessing + training/predicting can be done in one swoop.
 

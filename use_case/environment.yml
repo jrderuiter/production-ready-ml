@@ -1,0 +1,10 @@
+name: python-developer-hackathon
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.8.*
+  - pandas
+  - jupyterlab
+  - scikit-learn
+  - joblib

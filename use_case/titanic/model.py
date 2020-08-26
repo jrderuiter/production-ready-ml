@@ -9,8 +9,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
-from .features import PreprocessFeatures
-
 
 class TitanicModel(BaseEstimator):
 
@@ -20,7 +18,6 @@ class TitanicModel(BaseEstimator):
 
     def _build_pipeline(self):
         return Pipeline(steps=[
-            ("preprocess", PreprocessFeatures()),
             ("model", RandomForestClassifier(n_estimators=self.n_estimators))
         ])
 

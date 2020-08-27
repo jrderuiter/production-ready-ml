@@ -70,7 +70,7 @@ Now we have a basic package and implementation, it's a good idea to start enforc
 Now we have some documentation, we should probably also start implementing some tests for our code.
 
 1. Install pytest and create a *tests/titanic* directory, in which we will start writing our tests.
-2. Create a *test_features.py* file and implement some tests for our *ColumnSelector* class. See if you can use fixtures for sharing test data across tests.
+2. Create a *test_features.py* file and implement some tests for our *PreprocessFeatures* class. See if you can use fixtures for sharing test data across tests.
 
 *Bonus*
 

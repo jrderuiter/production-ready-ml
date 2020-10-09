@@ -1,0 +1,48 @@
+variables:
+  python.version: "3.x"
+
+stages:
+  - stage: CI
+    jobs:
+      - job: Precommit
+        displayName: Run pre-commit
+        steps:
+          - task: UsePythonVersion@0
+            displayName: Activate Python
+            inputs:
+              versionSpec: $(python.version)
+          - script: pip install -r requirements.dev.txt
+            displayName: Install dependencies
+          - script: pre-commit run --all
+            displayName: Run pre-commit hooks
+      - job: Test
+        displayName: Run tests
+        steps:
+          - task: UsePythonVersion@0
+            displayName: Activate Python
+            inputs:
+              versionSpec: $(python.version)
+          - script: pip install -r requirements.dev.txt
+            displayName: Install dependencies
+          - script: pip install .
+            displayName: Install library
+          - script: make test
+            displayName: Run pytest
+  - stage: Build
+    dependsOn: CI
+    jobs:
+      - job: BuildLibrary
+        displayName: Build library
+        steps:
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: $(python.version)
+          - script: pip install -r requirements.dev.txt
+            displayName: Install dependencies
+          - script: make dist
+            displayName: Build library
+          - task: PublishPipelineArtifact@0
+            displayName: Publish artifact
+            inputs:
+              artifactName: dist
+              targetPath: dist

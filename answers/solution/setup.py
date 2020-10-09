@@ -1,6 +1,5 @@
 import setuptools
 
-
 setuptools.setup(
     name="titanic",
     version="0.1",
@@ -18,6 +17,8 @@ setuptools.setup(
         "click",
         "flask",
     ],
-    extras_require={"dev": ["pep517", "pytest", "pylint", "black"],},
+    extras_require={
+        "dev": ["pep517", "pytest", "pylint", "black", "pre-commit"],
+    },
     entry_points={"console_scripts": ["titanic=titanic.cli:cli"]},
 )

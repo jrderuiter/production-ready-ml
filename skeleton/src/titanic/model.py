@@ -22,8 +22,11 @@ class TitanicModel(BaseEstimator):
         self.n_estimators = n_estimators
 
     def fit(self, X, y=None, **fit_params):
+        # TODO: Include pre-processing in the model using a pipeline.
+
         estimator = RandomForestClassifier(n_estimators=self.n_estimators)
         self.estimator_ = estimator.fit(X, y=y)
+
         return self
 
     def predict(self, X, **predict_params):

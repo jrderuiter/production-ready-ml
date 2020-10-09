@@ -2,9 +2,9 @@
 
 import io
 
-from flask import Flask, Response, request
 import joblib
 import pandas as pd
+from flask import Flask, Response, request
 
 
 class Scorer(Flask):
@@ -30,4 +30,7 @@ class Scorer(Flask):
         y_pred = self._model.predict(data)
         y_pred_df = pd.DataFrame({"prediction": y_pred})
 
-        return Response(y_pred_df.to_json(), content_type="application/json",)
+        return Response(
+            y_pred_df.to_json(),
+            content_type="application/json",
+        )

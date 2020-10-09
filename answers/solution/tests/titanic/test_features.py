@@ -7,7 +7,6 @@ from sklearn.exceptions import NotFittedError
 
 from titanic.features import PreprocessFeatures
 
-
 # Example showing how to use external files in fixtures:
 
 # @pytest.fixture()
@@ -27,18 +26,16 @@ from titanic.features import PreprocessFeatures
 
 
 class TestPreprocessFeatures:
-
     @pytest.fixture()
     def example_dataset(self):
         """Example dataset containing missing values."""
-        return pd.DataFrame({
-            "Pclass": [1, 1, 2, 3],
-            "Sex": ["male", "female", "female", np.nan]
-        })
+        return pd.DataFrame(
+            {"Pclass": [1, 1, 2, 3], "Sex": ["male", "female", "female", np.nan]}
+        )
 
     @pytest.fixture()
     def expected_result(self):
-        return np.array([[1., 1.], [1., 0.], [2., 0.], [3., 0.]])
+        return np.array([[1.0, 1.0], [1.0, 0.0], [2.0, 0.0], [3.0, 0.0]])
 
     def test_example(self, example_dataset, expected_result):
         """Tests basic transform on an example dataset."""

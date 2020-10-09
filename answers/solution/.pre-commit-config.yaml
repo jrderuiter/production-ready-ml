@@ -1,0 +1,43 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-toml
+      - id: debug-statements
+      - id: detect-private-key
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: python -m black
+        language: system
+        require_serial: true
+        types: [python]
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.4.0
+    hooks:
+      - id: isort
+  - repo: https://github.com/PyCQA/bandit
+    rev: '1.6.2'
+    hooks:
+    - id: bandit
+      entry: bandit --skip B101
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.7.2
+    hooks:
+      - id: pyupgrade
+        entry: pyupgrade --py38-plus
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: python -m pylint
+        language: system
+        require_serial: true
+        types: [python]
+        exclude: ^(tests|cd)

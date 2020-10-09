@@ -1,6 +1,8 @@
 # Production-ready Machine Learning training
 
-This repository contains the materials for the Ahold Production-ready Machine Learning training.
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jrderuiter/production-ready-ml)
+
+This repository contains the materials for the Production-ready Machine Learning training.
 
 ## Use case
 
@@ -67,7 +69,7 @@ Now we have a basic package and implementation, it's a good idea to start enforc
 
 ### 4 - Introducing tests using pytest
 
-Now we have some documentation, we should probably also start implementing some tests for our code.
+Now we setup our code quality checks, we should probably also start implementing some tests for our code.
 
 1. Install pytest and create a *tests/titanic* directory, in which we will start writing our tests.
 2. Create a *test_features.py* file and implement some tests for our *PreprocessFeatures* class. See if you can use fixtures for sharing test data across tests.

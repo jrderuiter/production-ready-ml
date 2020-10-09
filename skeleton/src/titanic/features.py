@@ -1,17 +1,28 @@
 import pandas as pd
 
 
-def select_features(df):
-    """Selects the features we're interested in."""
-    return df[["Pclass", "Sex"]]
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.utils.validation import check_is_fitted
 
 
-def impute_missing_values(df):
-    """Imputes missing values by filling in the most frequently occurring value."""
-    most_frequent_values = df.mode().iloc[0]
-    return df.fillna(most_frequent_values)
+class PreprocessFeatures(BaseEstimator, TransformerMixin):
+    """Transformer for preprocessing our titanic features."""
 
+    def _build_transformer(self):
+        # TODO: Define our transformer.
+        raise NotImplementedError()
 
-def encode_categorical(df):
-    """One-hot encodes any categorical features."""
-    return pd.get_dummies(df, drop_first=True)
+    # pylint: disable=missing-function-docstring
+    def fit(self, X, y=None):
+        transformer = self._build_transformer()
+        self.transformer_ = transformer.fit(X, y=y)
+        return self
+
+    # pylint: disable=missing-function-docstring
+    def transform(self, X):
+        check_is_fitted(self, ["transformer_"])
+        return self.transformer_.transform(X)

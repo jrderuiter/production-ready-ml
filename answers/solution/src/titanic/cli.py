@@ -11,7 +11,6 @@ from sklearn.model_selection import cross_validate
 from titanic.app import Scorer
 from titanic.model import TitanicModel
 
-
 logging.basicConfig(
     level=logging.INFO, format="[%(asctime)-15s] %(name)s - %(levelname)s - %(message)s"
 )
@@ -143,7 +142,8 @@ def predict(input_path, model_path, output_path):
 
 @cli.command()
 @click.argument(
-    "model_path", type=click.Path(dir_okay=False, exists=True),
+    "model_path",
+    type=click.Path(dir_okay=False, exists=True),
 )
 @click.option("--host", default="127.0.0.1")
 @click.option("--port", default=5000)
